@@ -4,18 +4,18 @@ import Gantt from "frappe-gantt";
 
 // Connects to data-controller="show-gantt"
 export default class extends Controller {
-  connect() {
-    this.todos();
+  async connect() {
+    const todoData = await this.todos();
+    new Gantt('#gantt', todoData);
   }
 
-  todos() {
-    axios.get('/todos.json')
-      .then(function (res) {
-       console.log(res.data);
-       new Gantt('#gantt', res.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  async todos() {
+    try {
+      const res = await axios.get('/todos.json');
+      return res.data;
+    } catch (error) {
+      console.log(error);
+      return [];
+    }
   }  
 }
