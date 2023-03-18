@@ -4,9 +4,11 @@ import Gantt from "frappe-gantt";
 
 // Connects to data-controller="show-gantt"
 export default class extends Controller {
+  ganttObj = null;
+
   async connect() {
     const todoData = await this.todos();
-    new Gantt('#gantt', todoData);
+    this.ganttObj = new Gantt('#gantt', todoData);
   }
 
   async todos() {
@@ -17,5 +19,10 @@ export default class extends Controller {
       console.log(error);
       return [];
     }
-  }  
+  }
+
+  week() {
+    console.log(this.ganttObj);
+    this.ganttObj.change_view_mode('Week');
+  }
 }
