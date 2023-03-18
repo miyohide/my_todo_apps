@@ -3,12 +3,28 @@
 <h1>Todos</h1>
 
 <div id="todos">
-  <% @todos.each do |todo| %>
-    <%= render todo %>
-    <p>
-      <%= link_to "Show this todo", todo %>
-    </p>
-  <% end %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>名前</th>
+        <th>開始日</th>
+        <th>終了日</th>
+        <th>進捗（%）</th>
+        <th></th>
+    </thead>
+    <tbody>
+      <% @todos.each do |todo| %>
+        <tr>
+          <td><%= todo.id %></td>
+          <td><%= todo.name %></td>
+          <td><%= todo.start %></td>
+          <td><%= todo.end %></td>
+          <td><%= todo.progress %></td>
+          <td><%= link_to "Show this todo", todo %></td>
+        </tr>
+      <% end %>
+  </table>
 </div>
 
 <div data-controller="show-gantt">
