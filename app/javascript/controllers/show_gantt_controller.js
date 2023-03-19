@@ -22,7 +22,14 @@ export default class extends Controller {
   }
 
   week() {
-    console.log(this.ganttObj);
     this.ganttObj.change_view_mode('Week');
+  }
+
+  day() {
+    this.ganttObj.change_view_mode('Day');
+  }
+
+  month() {
+    this.ganttObj.change_view_mode('Month');
   }
 }
