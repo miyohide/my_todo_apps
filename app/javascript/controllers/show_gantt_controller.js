@@ -8,7 +8,14 @@ export default class extends Controller {
 
   async connect() {
     const todoData = await this.todos();
-    this.ganttObj = new Gantt('#gantt', todoData);
+    this.ganttObj = new Gantt('#gantt', todoData, {
+      on_click: function (task) {
+        console.log(task);
+      },
+      on_progress_change: function(task, progress) {
+        console.log(task, progress);
+      }
+    });
   }
 
   async todos() {
