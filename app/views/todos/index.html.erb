@@ -30,6 +30,8 @@
   </table>
 </div>
 
+<%= paginate @todos %>
+
 <div data-controller="show-gantt">
   <svg id="gantt"></svg>
   <button data-action="click->show-gantt#day">Day</button>
