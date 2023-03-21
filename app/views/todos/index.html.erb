@@ -13,17 +13,20 @@
         <th>進捗（%）</th>
         <th></th>
     </thead>
-    <tbody>
-      <% @todos.each do |todo| %>
-        <tr>
-          <td><%= todo.id %></td>
-          <td><%= todo.name %></td>
-          <td><%= todo.start %></td>
-          <td><%= todo.end %></td>
-          <td><%= todo.progress %></td>
-          <td><%= link_to "Show this todo", todo %></td>
-        </tr>
-      <% end %>
+    <%= turbo_frame_tag "todo-list" do %>
+      <tbody>
+        <% @todos.each do |todo| %>
+          <tr>
+            <td><%= todo.id %></td>
+            <td><%= todo.name %></td>
+            <td><%= todo.start %></td>
+            <td><%= todo.end %></td>
+            <td><%= todo.progress %></td>
+            <td><%= link_to "Show this todo", todo %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    <% end %>
   </table>
 </div>
 
