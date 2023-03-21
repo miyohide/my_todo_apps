@@ -13,7 +13,15 @@ export default class extends Controller {
         console.log(task);
       },
       on_progress_change: function(task, progress) {
-        console.log(task, progress);
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        const todo_id = task.id.split('_')[1];
+        axios.put(`/todos/${todo_id}.json`, {
+          progress: task.progress
+        }, {
+          headers: {
+            'X-CSRF-Token' : csrfToken
+          }
+        });
       }
     });
   }
@@ -26,6 +34,10 @@ export default class extends Controller {
       console.log(error);
       return [];
     }
+  }
+
+  updateTodo(updatedData) {
+    console.log(updatedData);
   }
 
   week() {
