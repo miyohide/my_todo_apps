@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+100.times do |i|
+  Todo.create(name: "task #{i}", start: Date.today + i, end: Date.today + 10 + i, progress: 0)
+end
