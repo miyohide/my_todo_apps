@@ -2,6 +2,14 @@
 
 <h1>Todos</h1>
 
+<%= search_form_for @search do |f| %>
+  <%= f.label :name_cont, '名前' %>
+  <%= f.search_field :name_cont %>
+
+  <%= f.submit %>
+  <%= link_to 'クリア', todos_path %>
+<% end %>
+
 <div id="todos">
   <table class="table">
     <thead>
