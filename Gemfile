@@ -91,3 +91,6 @@ gem 'rails_semantic_logger', '~> 4.11'
 
 # pagination
 gem 'kaminari'
+
+# search
+gem 'ransack'
