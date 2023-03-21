@@ -3,7 +3,11 @@ class TodosController < ApplicationController
 
   # GET /todos or /todos.json
   def index
-    @todos = Todo.page(params[:page])
+    @search = Todo.ransack(params[:q])
+
+    @search.sorts = 'id desc' if @search.sorts.empty?
+
+    @todos = @search.result.page(params[:page])
   end
 
   # GET /todos/1 or /todos/1.json
