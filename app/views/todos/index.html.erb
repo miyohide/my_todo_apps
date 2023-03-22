@@ -14,10 +14,10 @@
   <table class="table">
     <thead>
       <tr>
-        <th>id</th>
-        <th>名前</th>
-        <th>開始日</th>
-        <th>終了日</th>
+        <th><%= sort_link(@search, :id) %></th>
+        <th><%= sort_link(@search, :name, '名前') %></th>
+        <th><%= sort_link(@search, :start, '開始日') %></th>
+        <th><%= sort_link(@search, :end, '終了日') %></th>
         <th>進捗（%）</th>
         <th></th>
     </thead>
