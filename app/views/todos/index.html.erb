@@ -11,34 +11,35 @@
 <% end %>
 
 <div id="todos">
-  <table class="table">
-    <thead>
-      <tr>
-        <th><%= sort_link(@search, :id) %></th>
-        <th><%= sort_link(@search, :name, '名前') %></th>
-        <th><%= sort_link(@search, :start, '開始日') %></th>
-        <th><%= sort_link(@search, :end, '終了日') %></th>
-        <th>進捗（%）</th>
-        <th></th>
-    </thead>
-    <%= turbo_frame_tag "todo-list" do %>
-      <tbody>
-        <% @todos.each do |todo| %>
-          <tr>
-            <td><%= todo.id %></td>
-            <td><%= todo.name %></td>
-            <td><%= todo.start %></td>
-            <td><%= todo.end %></td>
-            <td><%= todo.progress %></td>
-            <td><%= link_to "Show this todo", todo %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    <% end %>
-  </table>
+  <%= turbo_frame_tag "todos-list" do %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= sort_link(@search, :id) %></th>
+          <th><%= sort_link(@search, :name, '名前') %></th>
+          <th><%= sort_link(@search, :start, '開始日') %></th>
+          <th><%= sort_link(@search, :end, '終了日') %></th>
+          <th>進捗（%）</th>
+          <th></th>
+      </thead>
+      <%= turbo_frame_tag "todo-list" do %>
+        <tbody>
+          <% @todos.each do |todo| %>
+            <tr>
+              <td><%= todo.id %></td>
+              <td><%= todo.name %></td>
+              <td><%= todo.start %></td>
+              <td><%= todo.end %></td>
+              <td><%= todo.progress %></td>
+              <td><%= link_to "Show this todo", todo %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      <% end %>
+    </table>
+    <%= paginate @todos %>
+  <% end %>
 </div>
-
-<%= paginate @todos %>
 
 <div data-controller="show-gantt">
   <svg id="gantt"></svg>
