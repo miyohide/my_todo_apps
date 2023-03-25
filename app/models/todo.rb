@@ -1,6 +1,6 @@
 class Todo < ApplicationRecord
   validates :name, presence: true, length: { maximum: 100 }
-  validates :start, presence: true
+  validates :start, presence: true, date: true
   validates :end, presence: true, comparison: { greater_than_or_equal_to: :start }
   validates :progress, presence: true, numericality: { only_integer: true }
 
