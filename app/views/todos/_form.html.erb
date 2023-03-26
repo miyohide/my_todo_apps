@@ -1,6 +1,6 @@
 <%= form_with(model: todo) do |form| %>
   <% if todo.errors.any? %>
-    <div style="color: red">
+    <div class="alert alert-danger" role="alert">
       <h2><%= pluralize(todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
 
       <ul>
@@ -12,26 +12,26 @@
   <% end %>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.label :name, class: 'form-label' %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.label :start, style: "display: block" %>
-    <%= form.date_field :start %>
+    <%= form.label :start, class: 'form-label' %>
+    <%= form.date_field :start, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.label :end, style: "display: block" %>
-    <%= form.date_field :end %>
+    <%= form.label :end, class: 'form-label' %>
+    <%= form.date_field :end, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.label :progress, style: "display: block" %>
-    <%= form.number_field :progress %>
+    <%= form.label :progress, class: 'form-label' %>
+    <%= form.number_field :progress, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit 'Create/Update Todo', class: 'btn btn-primary' %>
   </div>
 <% end %>
