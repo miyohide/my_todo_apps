@@ -6,8 +6,8 @@
   <%= f.label :name_cont, '名前' %>
   <%= f.search_field :name_cont %>
 
-  <%= f.submit %>
-  <%= link_to 'クリア', todos_path %>
+  <%= f.submit 'Search Todo', class: 'btn btn-primary' %>
+  <%= link_to 'クリア', todos_path, class: 'btn btn-secondary' %>
 <% end %>
 
 <div id="todos">
