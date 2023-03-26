@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import ShowGanttController from "./show_gantt_controller"
 application.register("show-gantt", ShowGanttController)
+
+import TodoController from "./todo_controller";
+application.register("todo", TodoController);
