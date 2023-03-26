@@ -38,7 +38,10 @@
               <td><%= todo.start %></td>
               <td><%= todo.end %></td>
               <td><%= todo.progress %></td>
-              <td><%= link_to "Show this todo", todo %></td>
+              <td>
+                <%= link_to "Show", todo, class: 'btn btn-primary' %>
+                <%= link_to "Edit", edit_todo_path(todo), class: 'btn btn-secondary' %>
+              </td>
             </tr>
           <% end %>
         </tbody>
