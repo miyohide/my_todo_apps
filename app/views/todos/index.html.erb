@@ -19,34 +19,31 @@
 
 <div id="todos">
   <%= turbo_frame_tag "todos-list" do %>
-    <table class="table">
-      <thead>
-        <tr>
-          <th><%= sort_link(@search, :id) %></th>
-          <th><%= sort_link(@search, :name, '名前') %></th>
-          <th><%= sort_link(@search, :start, '開始日') %></th>
-          <th><%= sort_link(@search, :end, '終了日') %></th>
-          <th>進捗（%）</th>
-          <th></th>
-      </thead>
-      <%= turbo_frame_tag "todo-list" do %>
-        <tbody>
-          <% @todos.each do |todo| %>
-            <tr>
-              <td><%= todo.id %></td>
-              <td><%= todo.name %></td>
-              <td><%= todo.start %></td>
-              <td><%= todo.end %></td>
-              <td><%= todo.progress %></td>
-              <td>
-                <%= link_to "Show", todo, class: 'btn btn-primary' %>
-                <%= link_to "Edit", edit_todo_path(todo), class: 'btn btn-secondary' %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      <% end %>
-    </table>
+    <div class="card shadow mt-3">
+      <div class="card-body">
+        <div class="row py-2">
+          <div class="col-2 mt-auto">
+            <%= sort_link(@search, :id, 'id') %>
+          </div>
+          <div class="col-2 mt-auto">
+            <%= sort_link(@search, :name, '名前') %>
+          </div>
+          <div class="col-2 mt-auto">
+            <%= sort_link(@search, :start, '開始日') %>
+          </div>
+          <div class="col-2 mt-auto">
+            <%= sort_link(@search, :end, '終了日') %>
+          </div>
+          <div class="col-2 mt-auto">
+            進捗
+          </div>
+          <div class="col-2 d-flex justify-content-end">
+            <%= link_to "New todo", new_todo_path, class: 'btn btn-primary' %>
+          </div>
+        </div>
+        <%= render @todos %>
+      </div>
+    </div>
     <%= paginate @todos %>
   <% end %>
 </div>
@@ -57,5 +54,3 @@
   <button data-action="click->show-gantt#week">Week</button>
   <button data-action="click->show-gantt#month">Month</button>
 </div>
-
-<%= link_to "New todo", new_todo_path %>

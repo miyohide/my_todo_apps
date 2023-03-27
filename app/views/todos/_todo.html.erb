@@ -1,22 +1,25 @@
-<div id="<%= dom_id todo %>">
-  <p>
-    <strong>Name:</strong>
+<div class="row border-top">
+  <div class="col-2 my-auto">
+    <%= todo.id %>
+  </div>
+  <div class="col-2 my-auto">
     <%= todo.name %>
-  </p>
-
-  <p>
-    <strong>Start:</strong>
+  </div>
+  <div class="col-2 my-auto">
     <%= todo.start %>
-  </p>
-
-  <p>
-    <strong>End:</strong>
+  </div>
+  <div class="col-2 my-auto">
     <%= todo.end %>
-  </p>
-
-  <p>
-    <strong>Progress:</strong>
+  </div>
+  <div class="col-2 my-auto">
     <%= todo.progress %>
-  </p>
+  </div>
 
+  <div class="col-2 my-auto">
+    <%# 横並びにして、コンテンツを右端に寄せる %>
+    <div class="d-flex justify-content-end">
+      <%= link_to "Edit", edit_todo_path(todo), class: "btn btn-primary" %>
+      <%= button_to "Delete", todo, method: :delete, class: "btn btn-danger" %>
+    </div>
+  </div>
 </div>
