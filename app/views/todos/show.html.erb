@@ -1,10 +1,27 @@
-<p style="color: green"><%= notice %></p>
+<div id="<%= dom_id todo %>">
+  <p>
+    <strong>Name:</strong>
+    <%= @todo.name %>
+  </p>
 
-<%= render @todo %>
+  <p>
+    <strong>Start:</strong>
+    <%= @todo.start %>
+  </p>
 
-<div>
-  <%= link_to "Edit this todo", edit_todo_path(@todo) %> |
-  <%= link_to "Back to todos", todos_path %>
+  <p>
+    <strong>End:</strong>
+    <%= @todo.end %>
+  </p>
 
-  <%= button_to "Destroy this todo", @todo, method: :delete %>
+  <p>
+    <strong>Progress:</strong>
+    <%= @todo.progress %>
+  </p>
+
+  <div>
+    <%= link_to "Edit", edit_todo_path(@todo) %> |
+    <%= link_to "Back", todos_path %>
+  </div>
+
 </div>
