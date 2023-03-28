@@ -1,25 +1,27 @@
-<div class="row border-top">
-  <div class="col-2 my-auto">
-    <%= todo.id %>
-  </div>
-  <div class="col-2 my-auto">
-    <%= todo.name %>
-  </div>
-  <div class="col-2 my-auto">
-    <%= todo.start %>
-  </div>
-  <div class="col-2 my-auto">
-    <%= todo.end %>
-  </div>
-  <div class="col-2 my-auto">
-    <%= todo.progress %>
-  </div>
+<%= turbo_frame_tag todo do %>
+  <div class="row border-top">
+    <div class="col-2 my-auto">
+      <%= todo.id %>
+    </div>
+    <div class="col-2 my-auto">
+      <%= todo.name %>
+    </div>
+    <div class="col-2 my-auto">
+      <%= todo.start %>
+    </div>
+    <div class="col-2 my-auto">
+      <%= todo.end %>
+    </div>
+    <div class="col-2 my-auto">
+      <%= todo.progress %>
+    </div>
 
-  <div class="col-2 my-auto">
-    <%# 横並びにして、コンテンツを右端に寄せる %>
-    <div class="d-flex justify-content-end">
-      <%= link_to "Edit", edit_todo_path(todo), class: "btn btn-primary" %>
-      <%= button_to "Delete", todo, method: :delete, class: "btn btn-danger" %>
+    <div class="col-2 my-auto">
+      <%# 横並びにして、コンテンツを右端に寄せる %>
+      <div class="d-flex justify-content-end">
+        <%= link_to "Edit", edit_todo_path(todo), class: "btn btn-primary" %>
+        <%= button_to "Delete", todo, method: :delete, class: "btn btn-danger" %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
