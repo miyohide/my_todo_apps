@@ -1,37 +1,31 @@
-<%= form_with(model: todo) do |form| %>
-  <% if todo.errors.any? %>
-    <div class="alert alert-danger" role="alert">
-      <h2><%= pluralize(todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
+<%= turbo_frame_tag todo do %>
+  <%= form_with(model: todo) do |form| %>
+    <div class="row py-2 border-top">
+      <div class="col-2">
+        <%= todo.id %>
+      </div>
+      <div class="col-2">
+        <%= form.text_field :name, class: 'form-control' %>
+      </div>
 
-      <ul>
-        <% todo.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+      <div class="col-2">
+        <%= form.date_field :start, class: 'form-control' %>
+      </div>
+
+      <div class="col-2">
+        <%= form.date_field :end, class: 'form-control' %>
+      </div>
+
+      <div class="col-2">
+        <%= form.number_field :progress, class: 'form-control' %>
+      </div>
+
+      <div class="col-2">
+        <div class="d-flex justify-content-end">
+          <%= form.submit 'Update Todo', class: 'btn btn-primary' %>
+        </div>
+      </div>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :name, class: 'form-label' %>
-    <%= form.text_field :name, class: 'form-control' %>
-  </div>
-
-  <div>
-    <%= form.label :start, class: 'form-label' %>
-    <%= form.date_field :start, class: 'form-control' %>
-  </div>
-
-  <div>
-    <%= form.label :end, class: 'form-label' %>
-    <%= form.date_field :end, class: 'form-control' %>
-  </div>
-
-  <div>
-    <%= form.label :progress, class: 'form-label' %>
-    <%= form.number_field :progress, class: 'form-control' %>
-  </div>
-
-  <div>
-    <%= form.submit 'Create/Update Todo', class: 'btn btn-primary' %>
-  </div>
 <% end %>
+
