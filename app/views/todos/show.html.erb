@@ -1,27 +1,8 @@
-<div id="<%= dom_id todo %>">
-  <p>
-    <strong>Name:</strong>
-    <%= @todo.name %>
-  </p>
+<p style="color: green"><%= notice %></p>
 
-  <p>
-    <strong>Start:</strong>
-    <%= @todo.start %>
-  </p>
+<%= render @todo %>
 
-  <p>
-    <strong>End:</strong>
-    <%= @todo.end %>
-  </p>
-
-  <p>
-    <strong>Progress:</strong>
-    <%= @todo.progress %>
-  </p>
-
-  <div>
-    <%= link_to "Edit", edit_todo_path(@todo) %> |
-    <%= link_to "Back", todos_path %>
-  </div>
-
+<div>
+  <%= link_to "Edit", edit_todo_path(@todo) %> |
+  <%= link_to "Back", todos_path %>
 </div>
