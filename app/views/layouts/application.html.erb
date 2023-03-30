@@ -13,6 +13,9 @@
 
   <body id='<%= "#{controller.controller_name}_#{controller.action_name}" %>'>
     <div class="container">
+      <div id="flash">
+        <%= render "flash" %>
+      </div>
       <%= yield %>
     </div>
   </body>
