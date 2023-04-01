@@ -43,7 +43,7 @@
         </div>
         <!-- "New todo"リンクをクリックした時、todos#newの新規登録フォーム部分を下に置換する -->
         <%= turbo_frame_tag "new_todo" %>
-        <div id="todos">
+        <div id="todos-contents">
           <%= render @todos %>
         </div>
       </div>
