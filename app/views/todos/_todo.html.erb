@@ -19,7 +19,7 @@
     <div class="col-2 my-auto">
       <%# 横並びにして、コンテンツを右端に寄せる %>
       <div class="d-flex justify-content-end">
-        <%= link_to "Edit", edit_todo_path(todo), class: "btn btn-primary" %>
+        <%= link_to "Edit", edit_todo_path(todo), class: "btn btn-primary", data: { turbo_frame: "modal" } %>
         <%= button_to "Delete", todo, method: :delete, class: "btn btn-danger", form: { data: { turbo_confirm: "Are you sure?" }} %>
       </div>
     </div>
