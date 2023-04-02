@@ -38,11 +38,9 @@
             進捗
           </div>
           <div class="col-2 d-flex justify-content-end">
-            <%= link_to "New todo", new_todo_path, class: 'btn btn-primary', data: { turbo_frame: "new_todo" } %>
+            <%= link_to "New todo", new_todo_path, class: 'btn btn-primary', data: { turbo_frame: "modal" } %>
           </div>
         </div>
-        <!-- "New todo"リンクをクリックした時、todos#newの新規登録フォーム部分を下に置換する -->
-        <%= turbo_frame_tag "new_todo" %>
         <div id="todos-contents">
           <%= render @todos %>
         </div>
