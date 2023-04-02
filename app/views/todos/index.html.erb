@@ -18,7 +18,7 @@
 <% end %>
 
 <div id="todos">
-  <%= turbo_frame_tag "todos-list" do %>
+  <%= turbo_frame_tag "todos-list", data: { turbo_action: :advance } do %>
     <div class="card shadow mt-3">
       <div class="card-body">
         <div class="row py-2">
