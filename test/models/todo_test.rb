@@ -21,13 +21,18 @@ class TodoTest < ActiveSupport::TestCase
     assert_not t.save
   end
 
-  test '開始日付がフォーマット不正な場合には、保存ができないこと' do
-    t = Todo.new(name: 'task1', start: '20230412', end: Date.today + 1, progress: 10)
+  test '開始日付が日付として不正な場合には、保存ができないこと' do
+    t = Todo.new(name: 'task1', start: '2023-04-32', end: Date.today + 1, progress: 10)
     assert_not t.save
   end
 
-  test '開始日付が日付として不正な場合には、保存ができないこと' do
-    t = Todo.new(name: 'task1', start: '2023-04-32', end: Date.today + 1, progress: 10)
+  test '終了日付が入力されていない時には、保存ができないこと' do
+    t = Todo.new(name: 'task1', start: Date.today, progress: 10)
+    assert_not t.save
+  end
+
+  test '終了日付が日付として不正な場合には、保存ができないこと' do
+    t = Todo.new(name: 'task1', start: Date.today, end: '2023-05-32', progress: 10)
     assert_not t.save
   end
 end
