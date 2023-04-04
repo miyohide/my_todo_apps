@@ -27,26 +27,42 @@ class TodosController < ApplicationController
   def create
     @todo = Todo.new(todo_params)
 
-    if @todo.save
-      flash.now.notice = "Create Todo"
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @todo.save
+        format.html { redirect_to todo_url(@todo), notice: "Todo was successfully created." }
+        format.turbo_stream { flash.now.notice = "Create Todo" }
+        format.json { render :show, status: :created, location: @todo }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { render :new, status: :unprocessable_entity }
+        format.json { render json: @todo.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   # PATCH/PUT /todos/1 or /todos/1.json
   def update
-    if @todo.update(todo_params)
-      flash.now.notice = "Todo updated!"
-    else
-      render :edit, status: :unprocessable_entity
+    respond_to do |format|
+      if @todo.update(todo_params)
+        format.html { redirect_to todo_url(@todo), notice: "Todo was successfully updated." }
+        format.turbo_stream { flash.now.notice = "Todo updated!" }
+        format.json { render :show, status: :ok, location: @todo }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.turbo_stream { render :edit, status: :unprocessable_entity }
+        format.json { render json: @todo.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   # DELETE /todos/1 or /todos/1.json
   def destroy
     @todo.destroy
-    flash.now.notice = "Todo was successfully destroy."
+    respond_to do |format|
+      format.html { redirect_to todos_url, notice: t('.success') }
+      format.turbo_stream { flash.now.notice = "Todo was successfully destroy." }
+      format.json { head :no_content }
+    end
   end
 
   private
