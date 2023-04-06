@@ -49,10 +49,3 @@
     <%= paginate @todos %>
   <% end %>
 </div>
-
-<div data-controller="show-gantt">
-  <svg id="gantt"></svg>
-  <button data-action="click->show-gantt#day">Day</button>
-  <button data-action="click->show-gantt#week">Week</button>
-  <button data-action="click->show-gantt#month">Month</button>
-</div>

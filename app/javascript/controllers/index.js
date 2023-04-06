@@ -7,8 +7,5 @@ import { application } from "./application"
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
 
-import ShowGanttController from "./show_gantt_controller"
-application.register("show-gantt", ShowGanttController)
-
 import TodoController from "./todo_controller"
 application.register("todo", TodoController)
