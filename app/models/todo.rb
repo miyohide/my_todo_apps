@@ -7,4 +7,14 @@ class Todo < ApplicationRecord
   def self.ransackable_attributes(auth_object = nil)
     ["end", "id", "name", "progress", "start"]
   end
+
+  def frappe_json
+    new_todo = self.attributes
+    new_todo["id"] = frappe_id
+    new_todo.to_json
+  end
+
+  def frappe_id
+    "frappe_id-#{id}"
+  end
 end

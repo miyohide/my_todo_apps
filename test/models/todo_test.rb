@@ -35,4 +35,21 @@ class TodoTest < ActiveSupport::TestCase
     t = Todo.new(name: 'task1', start: Date.today, end: '2023-05-32', progress: 10)
     assert_not t.save
   end
+
+  test 'frappe_id はfrappe gantt用のIDを返すこと（数値では不具合が生じるため）' do
+    t = Todo.create(name: 'task1', start: Date.today, end: Date.today + 1, progress: 10)
+    assert_equal "frappe_id-#{t.id}", t.frappe_id
+  end
+
+  test 'frappe_json はfrappe gantt用のJSONデータを返すこと' do
+    t = Todo.create(name: 'task1', start: Date.today, end: Date.today + 1, progress: 10)
+    json_string = JSON.parse(t.frappe_json)
+    # idは変わっていること
+    assert_equal "frappe_id-#{t.id}", json_string["id"]
+    # 他の項目は変更が入っていないこと
+    assert_equal t.name, json_string["name"]
+    assert_equal t.start.to_s, json_string["start"]
+    assert_equal t.end.to_s, json_string["end"]
+    assert_equal t.progress, json_string["progress"]
+  end
 end
