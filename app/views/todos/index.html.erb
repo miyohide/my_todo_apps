@@ -47,6 +47,6 @@
       </div>
     </div>
     <%= paginate @todos %>
-    <div id="gantt" data-todos="<%= j @todos.to_json %>"></div>
+    <div id="gantt" data-controller="gantt" data-todos="<%= j @todos.to_json %>"></div>
   <% end %>
 </div>
