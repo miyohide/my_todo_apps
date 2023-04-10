@@ -8,13 +8,13 @@ class Todo < ApplicationRecord
     ["end", "id", "name", "progress", "start"]
   end
 
-  def frappe_json
+  def frappe_gantt_todo
     new_todo = self.attributes
-    new_todo["id"] = frappe_id
+    new_todo["id"] = frappe_gantt_id
     new_todo
   end
 
-  def frappe_id
-    "frappe_id-#{id}"
+  def frappe_gantt_id
+    "frappe_gantt_id-#{id}"
   end
 end

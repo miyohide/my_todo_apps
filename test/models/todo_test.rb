@@ -36,20 +36,20 @@ class TodoTest < ActiveSupport::TestCase
     assert_not t.save
   end
 
-  test 'frappe_id はfrappe gantt用のIDを返すこと（数値では不具合が生じるため）' do
+  test 'frappe_gantt_id はfrappe gantt用のIDを返すこと（数値では不具合が生じるため）' do
     t = Todo.create(name: 'task1', start: Date.today, end: Date.today + 1, progress: 10)
-    assert_equal "frappe_id-#{t.id}", t.frappe_id
+    assert_equal "frappe_gantt_id-#{t.id}", t.frappe_gantt_id
   end
 
-  test 'frappe_json はfrappe gantt用のJSONデータを返すこと' do
+  test 'frappe_gantt_todo はfrappe gantt用のTodoデータを返すこと' do
     t = Todo.create(name: 'task1', start: Date.today, end: Date.today + 1, progress: 10)
-    json_string = JSON.parse(t.frappe_json)
+    fgt = t.frappe_gantt_todo
     # idは変わっていること
-    assert_equal "frappe_id-#{t.id}", json_string["id"]
+    assert_equal "frappe_gantt_id-#{t.id}", fgt["id"]
     # 他の項目は変更が入っていないこと
-    assert_equal t.name, json_string["name"]
-    assert_equal t.start.to_s, json_string["start"]
-    assert_equal t.end.to_s, json_string["end"]
-    assert_equal t.progress, json_string["progress"]
+    assert_equal t.name, fgt["name"]
+    assert_equal t.start, fgt["start"]
+    assert_equal t.end, fgt["end"]
+    assert_equal t.progress, fgt["progress"]
   end
 end
