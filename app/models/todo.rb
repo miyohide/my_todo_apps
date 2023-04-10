@@ -11,7 +11,7 @@ class Todo < ApplicationRecord
   def frappe_json
     new_todo = self.attributes
     new_todo["id"] = frappe_id
-    new_todo.to_json
+    new_todo
   end
 
   def frappe_id
