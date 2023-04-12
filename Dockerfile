@@ -1,5 +1,5 @@
 FROM node:18.14.1 as node
-FROM ruby:3.2.1
+FROM ruby:3.2.2
 
 ENV YARN_VERSION=1.22.19
 RUN mkdir -p /opt
