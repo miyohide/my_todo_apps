@@ -36,6 +36,27 @@ class TodoTest < ActiveSupport::TestCase
     assert_not t.save
   end
 
+  test '進捗が入力されていないとき、保存ができ、デフォルト値として0が入ること' do
+    t = Todo.new(name: 'task1', start: Date.today, end: Date.today + 1)
+    assert t.save
+    assert_equal 0, t.progress
+  end
+
+  test '進捗が数値でないとき、保存ができないこと' do
+    t = Todo.new(name: 'task1', start: Date.today, end: Date.today + 1, progress: 'aaa')
+    assert_not t.save
+  end
+
+  test '進捗が整数でないとき、保存ができないこと' do
+    t = Todo.new(name: 'task1', start: Date.today, end: Date.today + 1, progress: 3.4)
+    assert_not t.save
+  end
+
+  test '進捗が負の数であるとき、保存ができないこと' do
+    t = Todo.new(name: 'task1', start: Date.today, end: Date.today + 1, progress: -10)
+    assert_not t.save
+  end
+
   test 'frappe_gantt_id はfrappe gantt用のIDを返すこと（数値では不具合が生じるため）' do
     t = Todo.create(name: 'task1', start: Date.today, end: Date.today + 1, progress: 10)
     assert_equal "frappe_gantt_id-#{t.id}", t.frappe_gantt_id
