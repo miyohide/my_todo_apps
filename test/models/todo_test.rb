@@ -1,4 +1,4 @@
-require "test_helper"
+require 'test_helper'
 
 class TodoTest < ActiveSupport::TestCase
   test '値が妥当な場合は保存できること' do
@@ -12,7 +12,7 @@ class TodoTest < ActiveSupport::TestCase
   end
 
   test 'nameが101文字以上入力されていないときには、保存できないこと' do
-    t = Todo.new(name: 'a'*101, start: Date.today, end: Date.today + 1, progress: 10)
+    t = Todo.new(name: 'a' * 101, start: Date.today, end: Date.today + 1, progress: 10)
     assert_not t.save
   end
 
@@ -66,11 +66,11 @@ class TodoTest < ActiveSupport::TestCase
     t = Todo.create(name: 'task1', start: Date.today, end: Date.today + 1, progress: 10)
     fgt = t.frappe_gantt_todo
     # idは変わっていること
-    assert_equal "frappe_gantt_id-#{t.id}", fgt["id"]
+    assert_equal "frappe_gantt_id-#{t.id}", fgt['id']
     # 他の項目は変更が入っていないこと
-    assert_equal t.name, fgt["name"]
-    assert_equal t.start, fgt["start"]
-    assert_equal t.end, fgt["end"]
-    assert_equal t.progress, fgt["progress"]
+    assert_equal t.name, fgt['name']
+    assert_equal t.start, fgt['start']
+    assert_equal t.end, fgt['end']
+    assert_equal t.progress, fgt['progress']
   end
 end
