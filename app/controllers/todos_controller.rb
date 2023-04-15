@@ -1,3 +1,4 @@
+# TodosController は /todos 以下のURLを処理するクラス
 class TodosController < ApplicationController
   before_action :set_todo, only: %i[show edit update destroy]
 
