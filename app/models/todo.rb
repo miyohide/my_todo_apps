@@ -1,3 +1,4 @@
+# Todo はタスクを表現するモデル
 class Todo < ApplicationRecord
   validates :name, presence: true, length: { maximum: 100 }
   validates :start, presence: true
