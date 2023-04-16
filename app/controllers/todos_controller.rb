@@ -28,8 +28,8 @@ class TodosController < ApplicationController
 
     respond_to do |format|
       if @todo.save
-        format.html { redirect_to todo_url(@todo), notice: 'Todo was successfully created.' }
-        format.turbo_stream { flash.now.notice = 'Create Todo' }
+        format.html { redirect_to todo_url(@todo), notice: t('.success') }
+        format.turbo_stream { flash.now.notice = t('.success') }
         format.json { render :show, status: :created, location: @todo }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -43,8 +43,8 @@ class TodosController < ApplicationController
   def update
     respond_to do |format|
       if @todo.update(todo_params)
-        format.html { redirect_to todo_url(@todo), notice: 'Todo was successfully updated.' }
-        format.turbo_stream { flash.now.notice = 'Todo updated!' }
+        format.html { redirect_to todo_url(@todo), notice: t('.success') }
+        format.turbo_stream { flash.now.notice = t('.success') }
         format.json { render :show, status: :ok, location: @todo }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -59,7 +59,7 @@ class TodosController < ApplicationController
     @todo.destroy
     respond_to do |format|
       format.html { redirect_to todos_url, notice: t('.success') }
-      format.turbo_stream { flash.now.notice = 'Todo was successfully destroy.' }
+      format.turbo_stream { flash.now.notice = t('.success') }
       format.json { head :no_content }
     end
   end

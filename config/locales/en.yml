@@ -37,3 +37,10 @@ en:
       success: 'Post was successfully updated.'
     destroy:
       success: 'Post was successfully destroyed.'
+  todos:
+    create:
+      success: 'Todo was successfully created.'
+    update:
+      success: 'Todo was successfully updated.'
+    destroy:
+      success: 'Todo was successfully destroy.'
