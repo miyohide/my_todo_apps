@@ -10,14 +10,15 @@ export default class extends Controller {
   }
 
   week() {
-    this.ganttObj.change_view_model('Week');
+    this.ganttObj.change_view_mode('Week');
   }
 
   day() {
-    this.ganttObj.change_view_model('Day');
+    console.log(this.ganttObj);
+    this.ganttObj.change_view_mode('Day');
   }
 
   month() {
-    this.ganttObj.change_view_model('Month');
+    this.ganttObj.change_view_mode('Month');
   }
 }
