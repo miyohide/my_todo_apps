@@ -51,7 +51,9 @@
   <% end %>
 </div>
 
-<button>Day</button>
-<button>Week</button>
-<button>Month</button>
+<div data-controller="gantt">
+  <button data-action="click->gantt#day">Day</button>
+  <button data-action="click->gantt#week">Week</button>
+  <button data-action="click->gantt#month">Month</button>
+</div>
 <svg id="ganttchart"></svg>
