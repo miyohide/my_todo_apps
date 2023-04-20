@@ -2,13 +2,13 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "./application"
+import { application } from "./application";
 
-import GanttController from "./gantt_controller"
-application.register("gantt", GanttController)
+import GanttController from "./gantt_controller";
+application.register("gantt", GanttController);
 
-import ModalController from "./modal_controller"
-application.register("modal", ModalController)
+import ModalController from "./modal_controller";
+application.register("modal", ModalController);
 
-import TodoController from "./todo_controller"
-application.register("todo", TodoController)
+import TodoController from "./todo_controller";
+application.register("todo", TodoController);
