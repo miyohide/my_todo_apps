@@ -54,7 +54,7 @@ group :development, :test do
   gem 'bundler-audit'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rubocop-rails', require: false
-  gem 'erb_lint'
+  gem 'erb_lint', require: false
 end
 
 group :development do
