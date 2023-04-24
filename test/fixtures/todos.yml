@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+todo1:
+  name: Todo 1
   start: 2023-03-14
   end: 2023-03-14
   progress: 1
 
-two:
-  name: MyString
+todo2:
+  name: Todo 2
   start: 2023-03-14
   end: 2023-03-14
   progress: 1
