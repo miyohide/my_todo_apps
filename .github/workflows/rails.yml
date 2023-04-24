@@ -43,18 +43,6 @@ jobs:
         run: bin/rails test
       - name: Generate docs
         run: bin/yard doc
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
-      - name: move generated files to docs/
-        run: |
-          mv coverage docs/coverage
-          mv doc docs/yard_docs
-      # Save Coverage
-      - name: Upload docs
-        uses: actions/upload-pages-artifact@v1
-        with:
-          # Upload entire repository
-          path: 'docs'
 
   lint:
     runs-on: ubuntu-latest
