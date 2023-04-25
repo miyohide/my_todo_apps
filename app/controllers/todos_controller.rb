@@ -28,6 +28,7 @@ class TodosController < ApplicationController
 
     respond_to do |format|
       if @todo.save
+        @todos = Todo.all
         format.html { redirect_to todo_url(@todo), notice: t('.success') }
         format.turbo_stream { flash.now.notice = t('.success') }
         format.json { render :show, status: :created, location: @todo }
