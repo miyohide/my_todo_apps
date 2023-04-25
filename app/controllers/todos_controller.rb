@@ -4,11 +4,7 @@ class TodosController < ApplicationController
 
   # GET /todos or /todos.json
   def index
-    @search = Todo.ransack(params[:q])
-
-    @search.sorts = 'id desc' if @search.sorts.empty?
-
-    @todos = @search.result.page(params[:page])
+    todos_per_page
   end
 
   # GET /todos/1 or /todos/1.json
@@ -28,7 +24,7 @@ class TodosController < ApplicationController
 
     respond_to do |format|
       if @todo.save
-        @todos = Todo.all
+        todos_per_page
         format.html { redirect_to todo_url(@todo), notice: t('.success') }
         format.turbo_stream { flash.now.notice = t('.success') }
         format.json { render :show, status: :created, location: @todo }
@@ -75,5 +71,13 @@ class TodosController < ApplicationController
   # Only allow a list of trusted parameters through.
   def todo_params
     params.require(:todo).permit(:name, :start, :end, :progress)
+  end
+
+  def todos_per_page
+    @search = Todo.ransack(params[:q])
+
+    @search.sorts = 'id desc' if @search.sorts.empty?
+
+    @todos = @search.result.page(params[:page])
   end
 end
