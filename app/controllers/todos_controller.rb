@@ -73,11 +73,14 @@ class TodosController < ApplicationController
     params.require(:todo).permit(:name, :start, :end, :progress)
   end
 
+  # todos_per_page は1ページに表示するTodoのリストを@todosに格納する
+  # また、ransackを使って条件に合ったものを@searchに格納している
   def todos_per_page
+    # ransackを使って条件に合ったものを@searchに格納
     @search = Todo.ransack(params[:q])
-
+    # ソート処理。未指定の場合はidの大きい順
     @search.sorts = 'id desc' if @search.sorts.empty?
-
+    # 現在のページに該当するTodoのリストを@todosに格納する
     @todos = @search.result.page(params[:page])
   end
 end
