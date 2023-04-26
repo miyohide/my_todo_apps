@@ -56,6 +56,7 @@ class TodosController < ApplicationController
   def destroy
     @todo.destroy
     respond_to do |format|
+      todos_per_page
       format.html { redirect_to todos_url, notice: t('.success') }
       format.turbo_stream { flash.now.notice = t('.success') }
       format.json { head :no_content }

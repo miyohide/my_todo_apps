@@ -1,2 +1,5 @@
 <%= turbo_stream.remove @todo %>
+<%= turbo_stream.replace "gantt" do %>
+  <div id="gantt" data-controller="gantt" data-todos="<%= todo_json_for_gantt(@todos) %>"></div>
+<% end %>
 <%= turbo_stream_flash %>
