@@ -40,6 +40,7 @@ class TodosController < ApplicationController
   def update
     respond_to do |format|
       if @todo.update(todo_params)
+        todos_per_page
         format.html { redirect_to todo_url(@todo), notice: t('.success') }
         format.turbo_stream { flash.now.notice = t('.success') }
         format.json { render :show, status: :ok, location: @todo }
