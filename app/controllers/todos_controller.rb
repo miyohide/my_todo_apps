@@ -21,6 +21,7 @@ class TodosController < ApplicationController
   # POST /todos or /todos.json
   def create
     @todo = Todo.new(todo_params)
+    @todo.progress = 100 if params[:complete]
 
     respond_to do |format|
       if @todo.save
