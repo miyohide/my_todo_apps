@@ -39,8 +39,11 @@ class TodosController < ApplicationController
 
   # PATCH/PUT /todos/1 or /todos/1.json
   def update
+    attr = todo_params.clone
+    attr["progress"] = 100 if params["complete"]
+
     respond_to do |format|
-      if @todo.update(todo_params)
+      if @todo.update(attr)
         todos_per_page
         format.html { redirect_to todo_url(@todo), notice: t('.success') }
         format.turbo_stream { flash.now.notice = t('.success') }
