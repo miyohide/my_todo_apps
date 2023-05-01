@@ -5,6 +5,8 @@ class Todo < ApplicationRecord
   validates :end, presence: true, comparison: { greater_than_or_equal_to: :start }
   validates :progress, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
+  attribute :complete
+
   def self.ransackable_attributes(_auth_object = nil)
     %w[end id name progress start]
   end
