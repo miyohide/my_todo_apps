@@ -9,8 +9,8 @@
     <%= form.label :progress, class: 'form-label' %>
     <%= form.number_field :progress, class: 'form-control' %>
 
-    <input type="checkbox" id="complete" name="complete">
-    <label for="complete">Complete?</label>
+    <%= form.check_box :complete, class: 'form-check-input' %>
+    <label for="todo_complete" class="form-check-label">Complete?</label>
 
     <div class="d-flex justify-content-end">
       <%= form.submit caption, class: "btn btn-primary" %>
