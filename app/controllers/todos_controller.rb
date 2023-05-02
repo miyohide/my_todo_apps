@@ -40,7 +40,7 @@ class TodosController < ApplicationController
   # PATCH/PUT /todos/1 or /todos/1.json
   def update
     attr = todo_params.clone
-    attr['progress'] = 100 if params['complete']
+    attr['progress'] = 100 if params[:todo][:complete]
 
     respond_to do |format|
       if @todo.update(attr)
