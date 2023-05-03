@@ -16,7 +16,9 @@ class TodosController < ApplicationController
   end
 
   # GET /todos/1/edit
-  def edit; end
+  def edit
+    @todo.complete = true if @todo.progress == 100
+  end
 
   # POST /todos or /todos.json
   def create
