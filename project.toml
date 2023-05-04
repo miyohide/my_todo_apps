@@ -8,6 +8,3 @@ exclude = [
     ".node_modules",
     "tmp"
 ]
-
-[[io.buildpacks.group]]
-uri = "heroku/ruby"
