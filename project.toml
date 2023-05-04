@@ -1,0 +1,13 @@
+[_]
+id = "my_todo_app"
+version = "0.1"
+
+[io.buildpacks]
+exclude = [
+    ".git",
+    ".node_modules",
+    "tmp"
+]
+
+[[io.buildpacks.group]]
+uri = "heroku/ruby"
