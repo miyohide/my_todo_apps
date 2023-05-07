@@ -23,7 +23,8 @@ class TodosController < ApplicationController
   # POST /todos or /todos.json
   def create
     @todo = Todo.new(todo_params)
-    @todo.progress = 100 if params[:todo][:complete]
+    # completeにチェックが入っていたら進捗は100%にする
+    @todo.progress = 100 if params[:todo][:complete] == '1'
 
     respond_to do |format|
       if @todo.save
@@ -42,7 +43,8 @@ class TodosController < ApplicationController
   # PATCH/PUT /todos/1 or /todos/1.json
   def update
     attr = todo_params.clone
-    attr['progress'] = 100 if params[:todo][:complete]
+    # completeにチェックが入っていたら進捗は100%にする
+    attr['progress'] = 100 if params[:todo][:complete] == '1'
 
     respond_to do |format|
       if @todo.update(attr)
